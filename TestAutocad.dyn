@@ -1,0 +1,592 @@
+{
+  "Uuid": "af26f9b8-1ff8-4524-b8d0-273423834531",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "TestAutocad",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "",
+      "Id": "588b8c0de6ee412e8911f42cac7b1154",
+      "Inputs": [],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "3a5e2f99-da0a-4d0b-a193-42619cb76458",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "d05c38da15254cdaa0cacc05a62b9f68",
+      "Inputs": [
+        {
+          "Id": "515f341932ae4e95b52012c3e998f699",
+          "Name": "importInstance",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "91ffdd32c4d4409daadf251e107e843f",
+          "Name": "BlockName",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "18a34b9ca54340ce97fdcbb4aadbd5d4",
+          "Name": "OriginPoint",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9dd4e873a44d44bfa5c7d94eacbb0b8c",
+          "Name": "Rotation",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e723685972a84e4fa6f24bd5ab9b97a0",
+          "Name": "LayerName",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the location point, name and layer of the CAD blocks / XRefs from a CAD link or import.\r\nPlease note : The non-uniform scaling of blocks is not supported (The X, Y and Z values ​​of the Block Scale must be the same)."
+    },
+    {
+      "ConcreteType": "Dynamo.Nodes.DSModelElementSelection, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "3fbb3190-4573-4b0c-abcf-7d668d0154d4-0004bb2e"
+      ],
+      "Id": "661c1ee58d8143e2a75b6220dd233eb4",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "99af3cd6bd174d54b848d9336e22f2da",
+          "Name": "Element",
+          "Description": "The selected elements.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "true;",
+      "Id": "143263de515b45f7a6d6acb2b9ebb449",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d344b2e115c6470e9b6c266634620c66",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"furniture\";",
+      "Id": "2d9733307189442f8cc319a5c3f4e020",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "057e1ca5fbd4443387bfd01605153fec",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "CAD.PointsFromCADLayers@Revit.Elements.ImportInstance,string[]",
+      "Id": "bf99425a29b44eb89d88651679a58bd3",
+      "Inputs": [
+        {
+          "Id": "c6222afddfb043a3ab3a9ac62bd704f8",
+          "Name": "importInstance",
+          "Description": "Input the ImportInstance to convert to curves.\n\nImportInstance",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b1e0c224fe0641b298459c97d66d21d5",
+          "Name": "layerNames",
+          "Description": "Input the layer names for conversion. Leave unconnected to convert all layers. Names are case-sensitive.\n\nstring[]\nDefault value : []",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "59df5a9a483f43dbb5ec39b3b1c0cd13",
+          "Name": "Point[][]",
+          "Description": "Point[][]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1d3005d6410c431a9586197985f14cdd",
+          "Name": "layerKeys[]",
+          "Description": "string[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "ToLinkStatus points from a CAD link or import to Dynamo Points by layer name. Points are organized into sublists by layer. \r\rVisit bimorph.com/bimorph-nodes for support.\n\nCAD.PointsFromCADLayers (importInstance: ImportInstance, layerNames: string[] = []): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "79be3011-89cb-40f6-bb2f-78cac5462571",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "7d8731f542404d55a67d0f3065e9cd89",
+      "Inputs": [
+        {
+          "Id": "242fd01adc104dd4b1cfc73bae2ef55c",
+          "Name": "importInstance",
+          "Description": "ImportInstance",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6543eceb20d74ea095057477c413e81c",
+          "Name": "ColorDisplay",
+          "Description": "bool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e636715d7b0b49d9a26d16b7ac6c14fa",
+          "Name": "[0] Grouped Geometries",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "334a6c4ee8384bd9b18aed0af4ad9ff9",
+          "Name": "[1] Grouped Colors",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4342a0934efb4e5abd6a8aed70c976da",
+          "Name": "[2] Layer Names",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "980c34d922b84243854d85409c25ced1",
+          "Name": "[3] API Curves/Meshes",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "cafffb8e0d644e1aaf46c019025620e6",
+          "Name": "[4] Colored Display",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Group geometries in ImportInstance by their layer name and convert the inside meshes into polysurface"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "3cefc231ca194f92b4938d480f3385d2",
+      "Inputs": [
+        {
+          "Id": "def478133d3c45efa3cdc79c5a5a246b",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2100f838795a43aeb55167d870233590",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.GetItemAtIndex@var[]..[],int",
+      "Id": "8335225391104eed9a398b718b43851f",
+      "Inputs": [
+        {
+          "Id": "7a84aceafb5d43fbace9f4f8ae00c706",
+          "Name": "list",
+          "Description": "List to fetch an item from.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "45e03ebc148848f9acc58c455b791ba0",
+          "Name": "index",
+          "Description": "Index of the item to be fetched.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "22ca2949d2f84d5ab551e8d68eb920e1",
+          "Name": "item",
+          "Description": "Item in the list at the given index.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns an item from the given list that's located at the specified index.\n\nList.GetItemAtIndex (list: var[]..[], index: int): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "6;",
+      "Id": "82b8ef216fc74984b11851a808a3f32f",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "80dd1150f9d6456d8e69c4cb715fabb4",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "cd997e3a-d190-4728-8d06-19dce5537479",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "98212929161f4f5dabc55401811b02a9",
+      "Inputs": [
+        {
+          "Id": "7baf74fc93234410b494f20a62f3d889",
+          "Name": "importInstance",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "eda30584b7374a398185ea5ef99f0aed",
+          "Name": "layerName",
+          "Description": "Optional input\n\nvar[]..[]\nDefault value : null",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "bc0282f51a5f45c1bcdcbe9b84338e8b",
+          "Name": "Curve",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Gets the boundaries of the hatches from a CAD link or import.\r\nBy Cyril Poupin on the Dynamo Forum"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "99af3cd6bd174d54b848d9336e22f2da",
+      "End": "515f341932ae4e95b52012c3e998f699",
+      "Id": "4457f9d2605d4a7fa9459e2284d60179"
+    },
+    {
+      "Start": "99af3cd6bd174d54b848d9336e22f2da",
+      "End": "242fd01adc104dd4b1cfc73bae2ef55c",
+      "Id": "6835db88913a4a76833deadb80f2cabd"
+    },
+    {
+      "Start": "e636715d7b0b49d9a26d16b7ac6c14fa",
+      "End": "7a84aceafb5d43fbace9f4f8ae00c706",
+      "Id": "edc1b066027343fca51a327c6a470db6"
+    },
+    {
+      "Start": "4342a0934efb4e5abd6a8aed70c976da",
+      "End": "def478133d3c45efa3cdc79c5a5a246b",
+      "Id": "d3dac8d581194d6b9de2423d85ea9977"
+    },
+    {
+      "Start": "80dd1150f9d6456d8e69c4cb715fabb4",
+      "End": "45e03ebc148848f9acc58c455b791ba0",
+      "Id": "d8b5efdb8d42463980ca39890b075797"
+    }
+  ],
+  "Dependencies": [
+    "3a5e2f99-da0a-4d0b-a193-42619cb76458",
+    "79be3011-89cb-40f6-bb2f-78cac5462571",
+    "cd997e3a-d190-4728-8d06-19dce5537479"
+  ],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Genius Loci",
+      "Version": "2022.4.19",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "d05c38da15254cdaa0cacc05a62b9f68",
+        "98212929161f4f5dabc55401811b02a9"
+      ]
+    },
+    {
+      "Name": "bimorphNodes",
+      "Version": "4.2.1",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "bf99425a29b44eb89d88651679a58bd3"
+      ]
+    },
+    {
+      "Name": "LinkDWG",
+      "Version": "0.3.91",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "7d8731f542404d55a67d0f3065e9cd89"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.10.1.3976",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -7.4790579304099083,
+      "EyeY": 25.936028528869144,
+      "EyeZ": 17.229124881327152,
+      "LookX": 9.69799518585205,
+      "LookY": -26.124258041381836,
+      "LookZ": -15.526442527770996,
+      "UpX": 0.3585834801197052,
+      "UpY": 0.73609679937362671,
+      "UpZ": -0.57409000396728516
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "588b8c0de6ee412e8911f42cac7b1154",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -1.0,
+        "Y": 150.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "CAD Block",
+        "Id": "d05c38da15254cdaa0cacc05a62b9f68",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 446.114461591061,
+        "Y": 117.82881690221598
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Select Model Element",
+        "Id": "661c1ee58d8143e2a75b6220dd233eb4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 121.4026293890492,
+        "Y": 329.87527367580213
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "143263de515b45f7a6d6acb2b9ebb449",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 125.0,
+        "Y": 612.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "2d9733307189442f8cc319a5c3f4e020",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 365.0,
+        "Y": 548.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "CAD.PointsFromCADLayers",
+        "Id": "bf99425a29b44eb89d88651679a58bd3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 943.54227207889312,
+        "Y": 791.17376150201812
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "GroupGeometriesByLayer",
+        "Id": "7d8731f542404d55a67d0f3065e9cd89",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 449.91675399682572,
+        "Y": 291.05062666390069
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "3cefc231ca194f92b4938d480f3385d2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 545.64944370505111,
+        "Y": 488.24360290050163
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.GetItemAtIndex",
+        "Id": "8335225391104eed9a398b718b43851f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 823.84700354091945,
+        "Y": 497.24411218930925
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "82b8ef216fc74984b11851a808a3f32f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 687.0,
+        "Y": 590.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Curves FromHatch",
+        "Id": "98212929161f4f5dabc55401811b02a9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 273.87568163323613,
+        "Y": 741.55359033026389
+      }
+    ],
+    "Annotations": [],
+    "X": 0.88565909174178614,
+    "Y": -141.05102220047829,
+    "Zoom": 0.823508389278486
+  }
+}
