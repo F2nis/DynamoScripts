@@ -20,16 +20,28 @@
       "Dictionary": {
         "Key": "DesignScript.Builtin.Dictionary",
         "Value": "DesignScriptBuiltin.dll"
+      },
+      "Document.Current": {
+        "Key": "Revit.Application.Document",
+        "Value": "RevitNodes.dll"
+      },
+      "Document": {
+        "Key": "Revit.Application.Document",
+        "Value": "RevitNodes.dll"
+      },
+      "FileSystem": {
+        "Key": "DSCore.IO.FileSystem",
+        "Value": "DSCoreNodes.dll"
       }
     }
   },
   "Inputs": [
     {
-      "Id": "ee9db71d9b374784b5f8f2c6260cb227",
-      "Name": "File Path",
+      "Id": "e4fa089c38854901a78d2da101f45d0b",
+      "Name": "Directory Path",
       "Type": "string",
-      "Value": ".\\DetailsToJson.Json",
-      "Description": "Allows you to select a file on the system to get its filename"
+      "Value": "C:\\Users\\fd\\Documents\\01.BBRI\\00.DynamoDevs",
+      "Description": "Allows you to select a directory on the system to get its path"
     }
   ],
   "Outputs": [
@@ -282,27 +294,6 @@
       ],
       "Replication": "Auto",
       "Description": "Writes the JsonObject or JsonArray to a json file.\n\nWrite.ToJsonFile (jsonObjects: JsonObject[]..[], filepath: string): string"
-    },
-    {
-      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
-      "HintPath": "C:\\Users\\fd\\Documents\\01.BBRI\\00.DynamoDevs\\DetailsToJson.Json",
-      "InputValue": ".\\DetailsToJson.Json",
-      "NodeType": "ExtensionNode",
-      "Id": "ee9db71d9b374784b5f8f2c6260cb227",
-      "Inputs": [],
-      "Outputs": [
-        {
-          "Id": "f509e32001e84b89a9e4743530908dad",
-          "Name": "",
-          "Description": "Filename",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Allows you to select a file on the system to get its filename"
     },
     {
       "ConcreteType": "Dynamo.Nodes.DSModelElementsSelection, DSRevitNodesUI",
@@ -612,6 +603,84 @@
       ],
       "Replication": "Disabled",
       "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Directory, CoreNodeModels",
+      "HintPath": "C:\\Users\\fd\\Documents\\01.BBRI\\00.DynamoDevs",
+      "InputValue": "C:\\Users\\fd\\Documents\\01.BBRI\\00.DynamoDevs",
+      "NodeType": "ExtensionNode",
+      "Id": "e4fa089c38854901a78d2da101f45d0b",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "cd4bdb098f394f4f95be221befec2b3a",
+          "Name": "",
+          "Description": "Directory",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows you to select a directory on the system to get its path"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "str1 = Document.FilePath(Document.Current);\nn1 = FileSystem.FileName(str1, false);\nname = n1+\".json\";\nfilePath = FileSystem.CombinePath([directoryPath, name]);",
+      "Id": "4186898177204a719d24a44eaa086002",
+      "Inputs": [
+        {
+          "Id": "b7e02e35861749f29c699d116e82c93f",
+          "Name": "directoryPath",
+          "Description": "directoryPath",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7961059cd3684d8484c0b55525fb417a",
+          "Name": "",
+          "Description": "str1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "add47fece6ac45c5b453e9e696f4296e",
+          "Name": "",
+          "Description": "n1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c85a2a5952804547b5de5f945170ef8b",
+          "Name": "",
+          "Description": "name",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b3a8c0707d584d3f907ac9973bcf84a6",
+          "Name": "",
+          "Description": "filePath",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
     }
   ],
   "Connectors": [
@@ -649,11 +718,6 @@
       "Start": "b6a61ccd2ebb474ebf1a6813773141ac",
       "End": "352f673da8d942eb863fac0a8d481eaa",
       "Id": "45bc0c39f1ce4547a07333c6bad2a9a5"
-    },
-    {
-      "Start": "f509e32001e84b89a9e4743530908dad",
-      "End": "73cc3a80c0ab4b6f8e9f24fb7428ea84",
-      "Id": "a2923c4b25c7480fb2f1e54620f767f6"
     },
     {
       "Start": "6aef8efccdf8422098b9f763ea4c1bab",
@@ -714,6 +778,16 @@
       "Start": "05e1efb9a4cd4ee3ac6cb3bd15a95f19",
       "End": "59be10e9f0e64d92bc7147769895ddf3",
       "Id": "05133d25fe1240228bbbf646e88cc75b"
+    },
+    {
+      "Start": "cd4bdb098f394f4f95be221befec2b3a",
+      "End": "b7e02e35861749f29c699d116e82c93f",
+      "Id": "a43473a65fb04c769f3f594ad0056a69"
+    },
+    {
+      "Start": "b3a8c0707d584d3f907ac9973bcf84a6",
+      "End": "73cc3a80c0ab4b6f8e9f24fb7428ea84",
+      "Id": "a89b26f3819a46e78c092ce9f05a0ad6"
     }
   ],
   "Dependencies": [],
@@ -778,8 +852,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2150.2873971843205,
-        "Y": -217.60876205944987
+        "X": 2576.1607562617596,
+        "Y": -337.96427658133484
       },
       {
         "ShowGeometry": true,
@@ -788,8 +862,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1665.4936248538372,
-        "Y": -221.44384944547073
+        "X": 2091.3669839312761,
+        "Y": -341.7993639673557
       },
       {
         "ShowGeometry": true,
@@ -808,18 +882,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2562.2941182043933,
-        "Y": -224.76709030986456
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "File Path",
-        "Id": "ee9db71d9b374784b5f8f2c6260cb227",
-        "IsSetAsInput": true,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 2241.4469399539871,
-        "Y": -53.859147716716564
+        "X": 2988.1674772818324,
+        "Y": -345.12260483174953
       },
       {
         "ShowGeometry": true,
@@ -860,6 +924,26 @@
         "Excluded": false,
         "X": 2534.0523033842733,
         "Y": 476.55417834294849
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Directory Path",
+        "Id": "e4fa089c38854901a78d2da101f45d0b",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1307.1423058134828,
+        "Y": -373.81611409451682
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "4186898177204a719d24a44eaa086002",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1311.8185521538906,
+        "Y": -202.33690494903428
       }
     ],
     "Annotations": [
@@ -869,15 +953,14 @@
         "Nodes": [
           "7b4d03c7b1db43ca9509bc7be8f34e82",
           "4c6879a3a64a4bf9b1bbef2295e3a2ad",
-          "8de2284a1af64e9087bee86d638069a2",
-          "ee9db71d9b374784b5f8f2c6260cb227"
+          "8de2284a1af64e9087bee86d638069a2"
         ],
-        "Left": 1655.4936248538372,
-        "Top": -277.96709030986455,
-        "Width": 1152.8004933505561,
-        "Height": 317.50794259314796,
+        "Left": 2081.3669839312761,
+        "Top": -398.32260483174952,
+        "Width": 1152.8004933505563,
+        "Height": 197.75832825041468,
         "FontSize": 36.0,
-        "InitialTop": -224.76709030986456,
+        "InitialTop": -345.12260483174953,
         "InitialHeight": 315.907942593148,
         "TextblockHeight": 43.2,
         "Background": "#FFFFAA45"
@@ -896,7 +979,7 @@
         "Height": 278.59999999999997,
         "FontSize": 36.0,
         "InitialTop": 142.45626062809754,
-        "InitialHeight": 170.4796861489412,
+        "InitialHeight": 221.57638040922922,
         "TextblockHeight": 43.2,
         "Background": "#FFA4E1FF"
       },
@@ -913,7 +996,7 @@
         "Height": 406.00168140795756,
         "FontSize": 36.0,
         "InitialTop": -85.101597438022338,
-        "InitialHeight": 145.0,
+        "InitialHeight": 362.00168140795756,
         "TextblockHeight": 86.4,
         "Background": "#FFC1D676"
       },
@@ -930,13 +1013,30 @@
         "Height": 229.5021212950416,
         "FontSize": 36.0,
         "InitialTop": 475.25205704790687,
-        "InitialHeight": 206.30212129504162,
+        "InitialHeight": 146.30212129504162,
+        "TextblockHeight": 43.2,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "afb76ea965614b7792b43b258e8043df",
+        "Title": "Directory Path & name definition",
+        "Nodes": [
+          "e4fa089c38854901a78d2da101f45d0b",
+          "4186898177204a719d24a44eaa086002"
+        ],
+        "Left": 1297.1423058134828,
+        "Top": -427.01611409451681,
+        "Width": 639.87624634040776,
+        "Height": 362.07920914548254,
+        "FontSize": 36.0,
+        "InitialTop": -373.81611409451682,
+        "InitialHeight": 338.87920914548255,
         "TextblockHeight": 43.2,
         "Background": "#FFC1D676"
       }
     ],
-    "X": -32.02545224052875,
-    "Y": 173.25439320095546,
-    "Zoom": 0.24578937391710912
+    "X": -216.05772158544426,
+    "Y": 458.1184830646427,
+    "Zoom": 0.38504405403041253
   }
 }
