@@ -32,6 +32,18 @@
       "FileSystem": {
         "Key": "DSCore.IO.FileSystem",
         "Value": "DSCoreNodes.dll"
+      },
+      "Color": {
+        "Key": "DSCore.Color",
+        "Value": "DSCoreNodes.dll"
+      },
+      "Elements.Element": {
+        "Key": "Revit.Elements.Element",
+        "Value": "RevitNodes.dll"
+      },
+      "Revit.Elements.Element": {
+        "Key": "Revit.Elements.Element",
+        "Value": "RevitNodes.dll"
       }
     }
   },
@@ -42,6 +54,13 @@
       "Type": "string",
       "Value": "C:\\Users\\fd\\Documents\\01.BBRI\\00.DynamoDevs",
       "Description": "Allows you to select a directory on the system to get its path"
+    },
+    {
+      "Id": "d45e21cbe12642df86e871adc362d463",
+      "Name": "Show Incomplete Elements in view",
+      "Type": "boolean",
+      "Value": "true",
+      "Description": "Selection between a true and false."
     }
   ],
   "Outputs": [
@@ -681,6 +700,101 @@
       ],
       "Replication": "Disabled",
       "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "d45e21cbe12642df86e871adc362d463",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "f09475b5fd6e47a39c62eae81503f877",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "t1 = List.FilterByBoolMask(el@L1<1>, bool1);\nt2 = Dictionary.ValueAtKey(t1, \"in\");\nt3 = List.Flatten(t2, -1);\ncolor1 = Color.ByARGB(0, 255, 0, 0);\nelement1 = Elements.Element.OverrideColorInView(t3, color1);",
+      "Id": "3702173ab4eb43b6b568d445fc4f101a",
+      "Inputs": [
+        {
+          "Id": "05515d7c5931427cb47f47178e26f10f",
+          "Name": "el",
+          "Description": "el",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "22403879fdea49469eb9e866984eb0d5",
+          "Name": "bool1",
+          "Description": "bool1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ff2137ef546248f3b8a6e1cb182e9e03",
+          "Name": "",
+          "Description": "t1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "30851ed58c33407c8c48adba22227854",
+          "Name": "",
+          "Description": "t2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b8f02b5c5ba944c9ba09a85371268022",
+          "Name": "",
+          "Description": "t3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2263f0e504aa43f1b1de21d949db57c4",
+          "Name": "",
+          "Description": "color1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b37879df311f479e905b488a16bb7559",
+          "Name": "",
+          "Description": "element1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
     }
   ],
   "Connectors": [
@@ -780,6 +894,11 @@
       "Id": "05133d25fe1240228bbbf646e88cc75b"
     },
     {
+      "Start": "05e1efb9a4cd4ee3ac6cb3bd15a95f19",
+      "End": "05515d7c5931427cb47f47178e26f10f",
+      "Id": "ee3d84a020904477acd38ec30b8df2e8"
+    },
+    {
       "Start": "cd4bdb098f394f4f95be221befec2b3a",
       "End": "b7e02e35861749f29c699d116e82c93f",
       "Id": "a43473a65fb04c769f3f594ad0056a69"
@@ -788,6 +907,11 @@
       "Start": "b3a8c0707d584d3f907ac9973bcf84a6",
       "End": "73cc3a80c0ab4b6f8e9f24fb7428ea84",
       "Id": "a89b26f3819a46e78c092ce9f05a0ad6"
+    },
+    {
+      "Start": "f09475b5fd6e47a39c62eae81503f877",
+      "End": "22403879fdea49469eb9e866984eb0d5",
+      "Id": "fcb7960f961c429d9d3451f0fa87ce54"
     }
   ],
   "Dependencies": [],
@@ -832,8 +956,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 309.99610204591971,
-        "Y": 131.90008396993525
+        "X": 119.09269528009912,
+        "Y": 469.47318129973996
       },
       {
         "ShowGeometry": true,
@@ -892,8 +1016,8 @@
         "IsSetAsInput": true,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 310.27181498701037,
-        "Y": -85.101597438022338
+        "X": 119.36840822118978,
+        "Y": 252.4714998917824
       },
       {
         "ShowGeometry": true,
@@ -922,8 +1046,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": true,
         "Excluded": false,
-        "X": 2534.0523033842733,
-        "Y": 476.55417834294849
+        "X": 2536.9807038458357,
+        "Y": 546.83578942045256
       },
       {
         "ShowGeometry": true,
@@ -944,6 +1068,26 @@
         "Excluded": false,
         "X": 1311.8185521538906,
         "Y": -202.33690494903428
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Show Incomplete Elements in view",
+        "Id": "d45e21cbe12642df86e871adc362d463",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 91.445731816515945,
+        "Y": 611.19050806476389
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Coloring Incomplete Objects",
+        "Id": "3702173ab4eb43b6b568d445fc4f101a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1973.4574810012396,
+        "Y": 842.73257057573733
       }
     ],
     "Annotations": [
@@ -961,7 +1105,7 @@
         "Height": 197.75832825041468,
         "FontSize": 36.0,
         "InitialTop": -345.12260483174953,
-        "InitialHeight": 315.907942593148,
+        "InitialHeight": 152.15832825041468,
         "TextblockHeight": 43.2,
         "Background": "#FFFFAA45"
       },
@@ -988,14 +1132,15 @@
         "Title": "Elements Selection",
         "Nodes": [
           "b58f33da11bf4a5dae1409b7eecfbd12",
-          "4d58a72dd58a440d99be4c619cfd525d"
+          "4d58a72dd58a440d99be4c619cfd525d",
+          "d45e21cbe12642df86e871adc362d463"
         ],
-        "Left": 299.99610204591971,
-        "Top": -181.50159743802234,
-        "Width": 258.67571294109069,
-        "Height": 406.00168140795756,
+        "Left": 81.445731816515945,
+        "Top": 156.07149989178239,
+        "Width": 295.2,
+        "Height": 522.91900817298142,
         "FontSize": 36.0,
-        "InitialTop": -85.101597438022338,
+        "InitialTop": 252.4714998917824,
         "InitialHeight": 362.00168140795756,
         "TextblockHeight": 86.4,
         "Background": "#FFC1D676"
@@ -1009,8 +1154,8 @@
         ],
         "Left": 1909.3586368613146,
         "Top": 422.05205704790689,
-        "Width": 924.29366652295857,
-        "Height": 229.5021212950416,
+        "Width": 927.222066984521,
+        "Height": 299.78373237254567,
         "FontSize": 36.0,
         "InitialTop": 475.25205704790687,
         "InitialHeight": 146.30212129504162,
@@ -1030,13 +1175,29 @@
         "Height": 362.07920914548254,
         "FontSize": 36.0,
         "InitialTop": -373.81611409451682,
-        "InitialHeight": 338.87920914548255,
+        "InitialHeight": 316.47920914548251,
         "TextblockHeight": 43.2,
         "Background": "#FFC1D676"
+      },
+      {
+        "Id": "612dbfe09809439ea1d5b9e7b4c3e9f7",
+        "Title": "Debug",
+        "Nodes": [
+          "3702173ab4eb43b6b568d445fc4f101a"
+        ],
+        "Left": 1963.4574810012396,
+        "Top": 789.53257057573728,
+        "Width": 613.59999999999991,
+        "Height": 208.20000000000005,
+        "FontSize": 36.0,
+        "InitialTop": 842.73257057573733,
+        "InitialHeight": 185.0,
+        "TextblockHeight": 43.2,
+        "Background": "#FFFF7BAC"
       }
     ],
-    "X": -216.05772158544426,
-    "Y": 458.1184830646427,
-    "Zoom": 0.38504405403041253
+    "X": -1436.3639969743219,
+    "Y": -396.88789106213665,
+    "Zoom": 0.89504636867415432
   }
 }
